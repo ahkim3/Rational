@@ -68,7 +68,8 @@ void RationalNumber::simplify()
 // Overloaded stream insertion operator
 ostream& operator<<(ostream& output, const RationalNumber& fraction)
 {
-	if (fraction.numerator == 0) // Fraction equivalent to zero
+	// Display just numerator if "fraction" is a whole number
+	if (fraction.numerator == 0 || fraction.numerator == fraction.denominator)
 		output << fraction.numerator;
 	else
 		output << fraction.numerator << '/' << fraction.denominator;

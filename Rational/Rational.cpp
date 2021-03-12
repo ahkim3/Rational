@@ -26,7 +26,7 @@ int main()
     // Prompt user to enter fractions
     cout << "Please enter a fraction (in form a/b): ";
     cin >> firstFraction;
-    cout << endl << "Please enter a second fraction (in form a/b): ";
+    cout << "Please enter a second fraction (in form a/b): ";
     cin >> secondFraction;
     cout << endl;
 
@@ -40,10 +40,13 @@ int main()
     product = firstFraction * secondFraction;
     quotient = firstFraction / secondFraction;
 
-    cout << "Sum: " << sum << endl;
-    cout << "Difference: " << difference << endl;
-    cout << "Product: " << product << endl;
-    cout << "Quotient: " << quotient << endl << endl;
+    cout << firstFraction << " + " << secondFraction << " = " << sum << endl;
+    cout << firstFraction << " - " << secondFraction << " = " << difference 
+        << endl;
+    cout << firstFraction << " * " << secondFraction << " = " << product 
+        << endl;
+    cout << firstFraction << " / " << secondFraction << " = " << quotient 
+        << endl << endl;
 
     // Comparisons
     lessThan = firstFraction < secondFraction;

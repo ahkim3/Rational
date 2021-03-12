@@ -35,20 +35,17 @@ public:
 	RationalNumber(); // Default constructor
 	RationalNumber(int, int); // Numerator and denominator
 
-	RationalNumber& operator+(RationalNumber);
-	RationalNumber& operator-(RationalNumber);
-	RationalNumber& operator*(RationalNumber);
-	RationalNumber& operator/(RationalNumber);
+	RationalNumber& operator+(RationalNumber&);
+	RationalNumber& operator-(RationalNumber&);
+	RationalNumber& operator*(RationalNumber&);
+	RationalNumber& operator/(RationalNumber&);
 	
-	bool operator<(RationalNumber);
-	bool operator>(RationalNumber);
-	bool operator<=(RationalNumber);
-	bool operator>=(RationalNumber);
-	bool operator==(RationalNumber);
-	bool operator!=(RationalNumber);
-
-	unsigned int getNumerator();
-	unsigned int getDenominator();
+	bool operator<(RationalNumber&);
+	bool operator>(RationalNumber&);
+	bool operator<=(RationalNumber&);
+	bool operator>=(RationalNumber&);
+	bool operator==(RationalNumber&);
+	bool operator!=(RationalNumber&);
 
 	~RationalNumber();
 

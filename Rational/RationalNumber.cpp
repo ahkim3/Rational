@@ -91,17 +91,17 @@ istream& operator>>(istream& input, RationalNumber& number)
 
 
 // Adds fractions
-RationalNumber& RationalNumber::operator+(RationalNumber secondFrac)
+RationalNumber& RationalNumber::operator+(RationalNumber& secondFrac)
 {
 	unsigned int greatestCommonDivisor = 
-		findGreatestCommonDivisor(denominator, secondFrac.getDenominator());
+		findGreatestCommonDivisor(denominator, secondFrac.denominator);
 	unsigned int leastCommonMultiple =
-		(denominator * secondFrac.getDenominator()) / greatestCommonDivisor;
+		(denominator * secondFrac.denominator) / greatestCommonDivisor;
 
 	// Find multipliers to get common demoninator
 	unsigned int firstMultiplier = leastCommonMultiple / denominator;
 	unsigned int secondMultiplier = leastCommonMultiple / 
-		secondFrac.getDenominator();
+		secondFrac.denominator;
 
 	// Create fraction containing sum
 	RationalNumber sum((numerator * firstMultiplier) + 
@@ -112,17 +112,17 @@ RationalNumber& RationalNumber::operator+(RationalNumber secondFrac)
 
 
 // Subtracts fractions
-RationalNumber& RationalNumber::operator-(RationalNumber secondFrac)
+RationalNumber& RationalNumber::operator-(RationalNumber& secondFrac)
 {
 	int greatestCommonDivisor =
-		findGreatestCommonDivisor(denominator, secondFrac.getDenominator());
+		findGreatestCommonDivisor(denominator, secondFrac.denominator);
 	int leastCommonMultiple =
-		(denominator * secondFrac.getDenominator()) / greatestCommonDivisor;
+		(denominator * secondFrac.denominator) / greatestCommonDivisor;
 
 	// Find multipliers to get common demoninator
 	unsigned int firstMultiplier = leastCommonMultiple / denominator;
 	unsigned int secondMultiplier = leastCommonMultiple /
-		secondFrac.getDenominator();
+		secondFrac.denominator;
 
 	// Create fraction containing sum
 	RationalNumber difference((numerator * firstMultiplier) - 
@@ -133,7 +133,7 @@ RationalNumber& RationalNumber::operator-(RationalNumber secondFrac)
 
 
 // Multiplies fractions
-RationalNumber& RationalNumber::operator*(RationalNumber secondFrac)
+RationalNumber& RationalNumber::operator*(RationalNumber& secondFrac)
 {
 	// Create fraction containing product
 	RationalNumber product((numerator * secondFrac.numerator),
@@ -144,7 +144,7 @@ RationalNumber& RationalNumber::operator*(RationalNumber secondFrac)
 
 
 // Divides fractions
-RationalNumber& RationalNumber::operator/(RationalNumber secondFrac)
+RationalNumber& RationalNumber::operator/(RationalNumber& secondFrac)
 {
 	if (secondFrac.numerator != 0) // Checks to see if divisor is not 0
 	{
@@ -160,7 +160,7 @@ RationalNumber& RationalNumber::operator/(RationalNumber secondFrac)
 
 
 // Checks if this fraction is less than second fraction
-bool RationalNumber::operator<(RationalNumber secondFrac)
+bool RationalNumber::operator<(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator) 
 		< ((double)secondFrac.numerator / (double)secondFrac.denominator))
@@ -170,7 +170,7 @@ bool RationalNumber::operator<(RationalNumber secondFrac)
 
 
 // Checks if this fraction is more than second fraction
-bool RationalNumber::operator>(RationalNumber secondFrac)
+bool RationalNumber::operator>(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		> ((double)secondFrac.numerator / (double)secondFrac.denominator))
@@ -180,7 +180,7 @@ bool RationalNumber::operator>(RationalNumber secondFrac)
 
 
 // Checks if this fraction is less than second fraction
-bool RationalNumber::operator<=(RationalNumber secondFrac)
+bool RationalNumber::operator<=(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		<= ((double)secondFrac.numerator / (double)secondFrac.denominator))
@@ -190,7 +190,7 @@ bool RationalNumber::operator<=(RationalNumber secondFrac)
 
 
 // Checks if this fraction is less than second fraction
-bool RationalNumber::operator>=(RationalNumber secondFrac)
+bool RationalNumber::operator>=(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		>= ((double)secondFrac.numerator / (double)secondFrac.denominator))
@@ -200,7 +200,7 @@ bool RationalNumber::operator>=(RationalNumber secondFrac)
 
 
 // Checks if this fraction is equal to the second fraction
-bool RationalNumber::operator==(RationalNumber secondFrac)
+bool RationalNumber::operator==(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		== ((double)secondFrac.numerator / (double)secondFrac.denominator))
@@ -210,24 +210,10 @@ bool RationalNumber::operator==(RationalNumber secondFrac)
 
 
 // Checks if this fraction is not equal to the second fraction
-bool RationalNumber::operator!=(RationalNumber secondFrac)
+bool RationalNumber::operator!=(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		!= ((double)secondFrac.numerator / (double)secondFrac.denominator))
 		return true;
 	return false;
-}
-
-
-// Returns current numerator of fraction
-unsigned int RationalNumber::getNumerator()
-{
-	return numerator;
-}
-
-
-// Returns current denominator of fraction
-unsigned int RationalNumber::getDenominator()
-{
-	return denominator;
 }

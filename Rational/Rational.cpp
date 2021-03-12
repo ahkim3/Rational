@@ -1,6 +1,6 @@
 /*
 Name: Andrew Kim
-Date: March 9, 2021
+Date: March 12, 2021
 Program: Even More A-Maze-ing
 
 I hereby certify that this program represents my
@@ -18,37 +18,41 @@ using namespace std;
 
 int main()
 {
-    RationalNumber fraction;
+    RationalNumber firstFraction, secondFraction, sum, difference, product, 
+        quotient;
+    bool lessThan, greaterThan, lessThanOrEqualTo, greaterThanOrEqualTo, 
+        equalTo, notEqualTo;
 
-    //cout << "Please enter a fraction (in form a/b): ";
-    //cin >> fraction;
+    // Prompt user to enter fractions
+    cout << "Please enter a fraction (in form a/b): ";
+    cin >> firstFraction;
+    cout << endl << "Please enter a second fraction (in form a/b): ";
+    cin >> secondFraction;
+    cout << endl;
 
-    RationalNumber firstFraction(0, 5);
-    RationalNumber secondFraction(-1, 5);
-
-    RationalNumber sum = firstFraction + secondFraction;
-    RationalNumber difference = firstFraction - secondFraction;
-    RationalNumber product = firstFraction * secondFraction;
-    RationalNumber quotient = firstFraction / secondFraction;
-    
-    bool lessThan = firstFraction < secondFraction;
-    bool greaterThan = firstFraction > secondFraction;
-    bool lessThanOrEqualTo = firstFraction <= secondFraction;
-    bool greaterThanOrEqualTo = firstFraction >= secondFraction;
-    bool equalTo = firstFraction == secondFraction;
-    bool notEqualTo = firstFraction != secondFraction;
-
-    // Simplified fractions
+    // Display simplified fractions
     cout << "First fraction (simplified): " << firstFraction << endl;
     cout << "Second fraction (simplified): " << secondFraction << endl << endl;
 
     // Arithmetic operations
+    sum = firstFraction + secondFraction;
+    difference = firstFraction - secondFraction;
+    product = firstFraction * secondFraction;
+    quotient = firstFraction / secondFraction;
+
     cout << "Sum: " << sum << endl;
     cout << "Difference: " << difference << endl;
     cout << "Product: " << product << endl;
     cout << "Quotient: " << quotient << endl << endl;
 
     // Comparisons
+    lessThan = firstFraction < secondFraction;
+    greaterThan = firstFraction > secondFraction;
+    lessThanOrEqualTo = firstFraction <= secondFraction;
+    greaterThanOrEqualTo = firstFraction >= secondFraction;
+    equalTo = firstFraction == secondFraction;
+    notEqualTo = firstFraction != secondFraction;
+
     if (lessThan)
         cout << firstFraction << " is less than " << secondFraction;
     else

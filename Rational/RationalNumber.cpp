@@ -3,7 +3,7 @@
 using namespace std;
 
 
-// Default constructor; 
+// Default constructor; prevents 0 or negative in denominator and simplifies
 RationalNumber::RationalNumber(int numeratorInput, int denominatorInput)
 {
 	int greatestCommonDivisor;
@@ -12,12 +12,26 @@ RationalNumber::RationalNumber(int numeratorInput, int denominatorInput)
 	if (denominator <= 0)
 		throw invalid_argument("Denominator must be positive");
 
-	// Reduces fractions to its simplified form
-	cout << findGreatestCommonDivisor(68, 51);
+	if (numeratorInput == 0) // Fraction is equivalent to 0
+	{
+		zero = true;
+		numerator = numeratorInput;
+		denominator = denominatorInput;
+	}
+	else
+	{
+		zero = false;
 
+		// Reduces fraction to its simplified form
+		greatestCommonDivisor = findGreatestCommonDivisor(numeratorInput,
+			denominatorInput);
+		numerator = numeratorInput / greatestCommonDivisor;
+		denominator = denominatorInput / greatestCommonDivisor;
+	}
 }
 
 
+// Default destructor
 RationalNumber::~RationalNumber()
 {
 }

@@ -18,6 +18,6 @@ using namespace std;
 
 int main()
 {
-    RationalNumber test(1, 1);
+    RationalNumber test(10, 125);
 }
 

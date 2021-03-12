@@ -50,6 +50,7 @@ public:
 private:
 	unsigned int numerator;
 	unsigned int denominator;
+	bool zero;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
 };

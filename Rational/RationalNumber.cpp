@@ -91,37 +91,55 @@ istream& operator>>(istream& input, RationalNumber& number)
 
 
 // Adds fractions
-RationalNumber& RationalNumber::operator+(RationalNumber second)
+RationalNumber& RationalNumber::operator+(RationalNumber secondFrac)
 {
 	unsigned int greatestCommonDivisor = 
-		findGreatestCommonDivisor(denominator, second.getDenominator());
+		findGreatestCommonDivisor(denominator, secondFrac.getDenominator());
 	unsigned int leastCommonMultiple =
-		(denominator * second.getDenominator()) / greatestCommonDivisor;
+		(denominator * secondFrac.getDenominator()) / greatestCommonDivisor;
 
 	// Find multipliers to get common demoninator
 	unsigned int firstMultiplier = leastCommonMultiple / denominator;
 	unsigned int secondMultiplier = leastCommonMultiple / 
-		second.getDenominator();
+		secondFrac.getDenominator();
 
 	// Create fraction containing sum
-	RationalNumber sum((numerator * firstMultiplier) + (second.numerator * 
-		secondMultiplier), leastCommonMultiple);
+	RationalNumber sum((numerator * firstMultiplier) + 
+		(secondFrac.numerator * secondMultiplier), leastCommonMultiple);
 
 	return sum;
 }
 
-/*
+
 // Subtracts fractions
-RationalNumber& RationalNumber::operator-()
+RationalNumber& RationalNumber::operator-(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	unsigned int greatestCommonDivisor =
+		findGreatestCommonDivisor(denominator, secondFrac.getDenominator());
+	unsigned int leastCommonMultiple =
+		(denominator * secondFrac.getDenominator()) / greatestCommonDivisor;
+
+	// Find multipliers to get common demoninator
+	unsigned int firstMultiplier = leastCommonMultiple / denominator;
+	unsigned int secondMultiplier = leastCommonMultiple /
+		secondFrac.getDenominator();
+
+	// Create fraction containing sum
+	RationalNumber difference((numerator * firstMultiplier) - 
+		(secondFrac.numerator *	secondMultiplier), leastCommonMultiple);
+
+	return difference;
 }
 
 
 // Multiplies fractions
-RationalNumber& RationalNumber::operator*()
+RationalNumber& RationalNumber::operator*(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	// Create fraction containing product
+	RationalNumber product((numerator * secondFrac.numerator),
+		(denominator * secondFrac.denominator));
+
+	return product;
 }
 
 /*

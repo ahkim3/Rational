@@ -20,12 +20,18 @@ int main()
 {
     RationalNumber fraction;
 
-    cout << "Please enter a fraction (in form a/b): ";
-    cin >> fraction;
+    //cout << "Please enter a fraction (in form a/b): ";
+    //cin >> fraction;
 
-    RationalNumber fraction2(1, 3);
+    RationalNumber firstFrac(-1, 2);
+    RationalNumber secondFrac(1, 3);
 
-    RationalNumber sum = fraction + fraction2;
-    cout << sum;
+    RationalNumber sum = firstFrac + secondFrac;
+    //RationalNumber difference = fraction - firstAddFrac;
+    RationalNumber product = firstFrac * secondFrac;
+
+    cout << "Sum: " << sum << endl;
+    //cout << "Difference: " << difference << endl;
+    cout << "Product: " << product << endl;
 }
 

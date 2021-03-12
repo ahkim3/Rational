@@ -36,8 +36,8 @@ public:
 	RationalNumber(int, int); // Numerator and denominator
 
 	RationalNumber& operator+(RationalNumber);
-	RationalNumber& operator-();
-	RationalNumber& operator*();
+	RationalNumber& operator-(RationalNumber);
+	RationalNumber& operator*(RationalNumber);
 	/*
 	RationalNumber& operator/();
 	RationalNumber& operator<();
@@ -52,7 +52,7 @@ public:
 	~RationalNumber();
 
 private:
-	unsigned int numerator;
+	int numerator;
 	unsigned int denominator;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);

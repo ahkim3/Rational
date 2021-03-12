@@ -50,8 +50,7 @@ public:
 	~RationalNumber();
 
 private:
-	int numerator;
-	unsigned int denominator;
+	int numerator, denominator;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
 	void checkValidity();

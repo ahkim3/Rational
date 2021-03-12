@@ -1,7 +1,7 @@
 /*
 Name: Andrew Kim
 Date: March 12, 2021
-Program: Even More A-Maze-ing
+Program: Rational
 
 I hereby certify that this program represents my
 work and that the design and logic was completed
@@ -34,12 +34,13 @@ int main()
     cout << "First fraction (simplified): " << firstFraction << endl;
     cout << "Second fraction (simplified): " << secondFraction << endl << endl;
 
-    // Arithmetic operations
+    // Calculate arithmetic operations
     sum = firstFraction + secondFraction;
     difference = firstFraction - secondFraction;
     product = firstFraction * secondFraction;
     quotient = firstFraction / secondFraction;
 
+    // Display arithmetic operations
     cout << firstFraction << " + " << secondFraction << " = " << sum << endl;
     cout << firstFraction << " - " << secondFraction << " = " << difference 
         << endl;
@@ -48,7 +49,7 @@ int main()
     cout << firstFraction << " / " << secondFraction << " = " << quotient 
         << endl << endl;
 
-    // Comparisons
+    // Calculate comparisons
     lessThan = firstFraction < secondFraction;
     greaterThan = firstFraction > secondFraction;
     lessThanOrEqualTo = firstFraction <= secondFraction;
@@ -56,6 +57,7 @@ int main()
     equalTo = firstFraction == secondFraction;
     notEqualTo = firstFraction != secondFraction;
 
+    // Display comparisons
     if (lessThan)
         cout << firstFraction << " is less than " << secondFraction;
     else

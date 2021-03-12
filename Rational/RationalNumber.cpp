@@ -42,8 +42,21 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 // Prevents division by 0 and negative denominators
 void RationalNumber::checkValidity()
 {
-	if (denominator <= 0)
-		throw invalid_argument("Denominator must be positive.");
+	if (denominator == 0)
+	{
+		cout << "Denominator must be non-zero.";
+	}
+	else if (numerator < 0 && denominator < 0)
+	{
+		// Double negative simplifies to positive
+		numerator = abs(numerator);
+		denominator = abs(denominator);
+	}
+	else if (denominator < 0)
+	{
+		numerator *= -1;
+		denominator = abs(denominator);
+	}
 }
 
 
@@ -69,7 +82,8 @@ void RationalNumber::simplify()
 ostream& operator<<(ostream& output, const RationalNumber& fraction)
 {
 	// Display just numerator if "fraction" is a whole number
-	if (fraction.numerator == 0 || fraction.numerator == fraction.denominator)
+	if (fraction.numerator == 0 || fraction.numerator == fraction.denominator
+		|| fraction.denominator == 1)
 		output << fraction.numerator;
 	else
 		output << fraction.numerator << '/' << fraction.denominator;

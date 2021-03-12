@@ -7,7 +7,7 @@ using namespace std;
 class RationalNumber
 {
 	friend ostream& operator<<(ostream&, const RationalNumber&);
-	//friend istream& operator>>(istream&, RationalNumber&);
+	friend istream& operator>>(istream&, RationalNumber&);
 	
 	/*
 	overload:
@@ -50,7 +50,6 @@ public:
 private:
 	unsigned int numerator;
 	unsigned int denominator;
-	bool zero;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
 };

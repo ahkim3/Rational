@@ -15,14 +15,11 @@ RationalNumber::RationalNumber(int numeratorInput, int denominatorInput)
 
 	if (numeratorInput == 0) // Fraction is equivalent to 0
 	{
-		zero = true;
 		numerator = numeratorInput;
 		denominator = denominatorInput;
 	}
 	else
 	{
-		zero = false;
-
 		// Reduces fraction to its simplified form
 		greatestCommonDivisor = findGreatestCommonDivisor(numeratorInput,
 			denominatorInput);
@@ -51,6 +48,9 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 // Overloaded output operator
 ostream& operator<<(ostream& output, const RationalNumber& fraction)
 {
-	output << fraction.numerator << " / " << fraction.denominator;
+	if (fraction.numerator == 0) // Fraction equivalent to zero
+		output << fraction.numerator;
+	else
+		output << fraction.numerator << " / " << fraction.denominator;
 	return output;
 }

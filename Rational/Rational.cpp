@@ -18,7 +18,7 @@ using namespace std;
 
 int main()
 {
-    RationalNumber test(10, 125);
+    RationalNumber test(0, 125);
 
     cout << test;
 }

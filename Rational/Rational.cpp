@@ -19,5 +19,7 @@ using namespace std;
 int main()
 {
     RationalNumber test(10, 125);
+
+    cout << test;
 }
 

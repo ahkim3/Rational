@@ -1,4 +1,5 @@
 #include "RationalNumber.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -47,4 +48,9 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 }
 
 
-
+// Overloaded output operator
+ostream& operator<<(ostream& output, const RationalNumber& fraction)
+{
+	output << fraction.numerator << " / " << fraction.denominator;
+	return output;
+}

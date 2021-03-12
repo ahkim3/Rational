@@ -43,7 +43,7 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 void RationalNumber::checkValidity()
 {
 	if (denominator <= 0)
-		throw invalid_argument("Denominator must be positive");
+		throw invalid_argument("Denominator must be positive.");
 }
 
 
@@ -57,7 +57,7 @@ void RationalNumber::simplify()
 	else
 	{
 		// Reduces fraction to its simplified form
-		greatestCommonDivisor = findGreatestCommonDivisor(numerator, 
+		greatestCommonDivisor = findGreatestCommonDivisor(abs(numerator), 
 			denominator);
 		numerator = numerator / greatestCommonDivisor;
 		denominator = denominator / greatestCommonDivisor;
@@ -114,9 +114,9 @@ RationalNumber& RationalNumber::operator+(RationalNumber secondFrac)
 // Subtracts fractions
 RationalNumber& RationalNumber::operator-(RationalNumber secondFrac)
 {
-	unsigned int greatestCommonDivisor =
+	int greatestCommonDivisor =
 		findGreatestCommonDivisor(denominator, secondFrac.getDenominator());
-	unsigned int leastCommonMultiple =
+	int leastCommonMultiple =
 		(denominator * secondFrac.getDenominator()) / greatestCommonDivisor;
 
 	// Find multipliers to get common demoninator
@@ -142,42 +142,81 @@ RationalNumber& RationalNumber::operator*(RationalNumber secondFrac)
 	return product;
 }
 
-/*
+
 // Divides fractions
-RationalNumber& RationalNumber::operator/()
+RationalNumber& RationalNumber::operator/(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (secondFrac.numerator != 0) // Checks to see if divisor is not 0
+	{
+		// Create fraction containing product
+		RationalNumber quotient((numerator * secondFrac.denominator),
+			(denominator * secondFrac.numerator));
+
+		return quotient;
+	}
+	else
+		throw invalid_argument("Divisor cannot be 0.");
 }
 
-RationalNumber& RationalNumber::operator<()
+
+// Checks if this fraction is less than second fraction
+bool RationalNumber::operator<(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (((double)numerator / (double)denominator) 
+		< ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
 }
 
-RationalNumber& RationalNumber::operator>()
+
+// Checks if this fraction is more than second fraction
+bool RationalNumber::operator>(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (((double)numerator / (double)denominator)
+		> ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
 }
 
-RationalNumber& RationalNumber::operator<=()
+
+// Checks if this fraction is less than second fraction
+bool RationalNumber::operator<=(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (((double)numerator / (double)denominator)
+		<= ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
 }
 
-RationalNumber& RationalNumber::operator>=()
+
+// Checks if this fraction is less than second fraction
+bool RationalNumber::operator>=(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (((double)numerator / (double)denominator)
+		>= ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
 }
 
-RationalNumber& RationalNumber::operator==()
+
+// Checks if this fraction is equal to the second fraction
+bool RationalNumber::operator==(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
+	if (((double)numerator / (double)denominator)
+		== ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
 }
 
-RationalNumber& RationalNumber::operator!=()
+
+// Checks if this fraction is not equal to the second fraction
+bool RationalNumber::operator!=(RationalNumber secondFrac)
 {
-	// TODO: insert return statement here
-}*/
+	if (((double)numerator / (double)denominator)
+		!= ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
+}
 
 
 // Returns current numerator of fraction

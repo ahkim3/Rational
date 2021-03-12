@@ -38,14 +38,15 @@ public:
 	RationalNumber& operator+(RationalNumber);
 	RationalNumber& operator-(RationalNumber);
 	RationalNumber& operator*(RationalNumber);
-	/*
-	RationalNumber& operator/();
-	RationalNumber& operator<();
-	RationalNumber& operator>();
-	RationalNumber& operator<=();
-	RationalNumber& operator>=();
-	RationalNumber& operator==();
-	RationalNumber& operator!=();*/
+	RationalNumber& operator/(RationalNumber);
+	
+	bool operator<(RationalNumber);
+	bool operator>(RationalNumber);
+	bool operator<=(RationalNumber);
+	bool operator>=(RationalNumber);
+	bool operator==(RationalNumber);
+	bool operator!=(RationalNumber);
+
 	unsigned int getNumerator();
 	unsigned int getDenominator();
 

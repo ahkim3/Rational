@@ -71,7 +71,7 @@ ostream& operator<<(ostream& output, const RationalNumber& fraction)
 	if (fraction.numerator == 0) // Fraction equivalent to zero
 		output << fraction.numerator;
 	else
-		output << fraction.numerator << " / " << fraction.denominator;
+		output << fraction.numerator << '/' << fraction.denominator;
 	return output;
 }
 

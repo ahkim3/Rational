@@ -18,8 +18,10 @@ using namespace std;
 
 int main()
 {
-    RationalNumber test(0, 125);
+    RationalNumber fraction;
 
-    cout << test;
+    cout << "Please enter a fraction (in form a/b): ";
+    cin >> fraction;
+    cout << fraction;
 }
 

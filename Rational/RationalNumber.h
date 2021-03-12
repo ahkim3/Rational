@@ -32,6 +32,7 @@ class RationalNumber
 	*/
 
 public:
+	RationalNumber(); // Default constructor
 	RationalNumber(int, int); // Numerator and denominator
 	/*RationalNumber& operator+();
 	RationalNumber& operator-();
@@ -52,5 +53,7 @@ private:
 	unsigned int denominator;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
+	void checkValidity();
+	void simplify();
 };
 

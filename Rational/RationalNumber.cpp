@@ -4,28 +4,22 @@
 using namespace std;
 
 
-// Default constructor; prevents 0 or negative in denominator and simplifies
+// Default constructor
+RationalNumber::RationalNumber()
+{
+	numerator = 1;
+	denominator = 1;
+}
+
+
+// Prevents 0 or negative in denominator and simplifies fraction
 RationalNumber::RationalNumber(int numeratorInput, int denominatorInput)
 {
-	int greatestCommonDivisor;
+	numerator = numeratorInput;
+	denominator = denominatorInput;
 
-	// Prevents division by 0 and negative denominators
-	if (denominator <= 0)
-		throw invalid_argument("Denominator must be positive");
-
-	if (numeratorInput == 0) // Fraction is equivalent to 0
-	{
-		numerator = numeratorInput;
-		denominator = denominatorInput;
-	}
-	else
-	{
-		// Reduces fraction to its simplified form
-		greatestCommonDivisor = findGreatestCommonDivisor(numeratorInput,
-			denominatorInput);
-		numerator = numeratorInput / greatestCommonDivisor;
-		denominator = denominatorInput / greatestCommonDivisor;
-	}
+	checkValidity();
+	simplify();
 }
 
 
@@ -45,7 +39,33 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 }
 
 
-// Overloaded output operator
+// Prevents division by 0 and negative denominators
+void RationalNumber::checkValidity()
+{
+	if (denominator <= 0)
+		throw invalid_argument("Denominator must be positive");
+}
+
+
+// Reduces the fraction
+void RationalNumber::simplify()
+{
+	int greatestCommonDivisor;
+
+	if (numerator == 0) // Fraction is equivalent to 0
+		denominator = 1;
+	else
+	{
+		// Reduces fraction to its simplified form
+		greatestCommonDivisor = findGreatestCommonDivisor(numerator, 
+			denominator);
+		numerator = numerator / greatestCommonDivisor;
+		denominator = denominator / greatestCommonDivisor;
+	}
+}
+
+
+// Overloaded stream insertion operator
 ostream& operator<<(ostream& output, const RationalNumber& fraction)
 {
 	if (fraction.numerator == 0) // Fraction equivalent to zero
@@ -53,4 +73,18 @@ ostream& operator<<(ostream& output, const RationalNumber& fraction)
 	else
 		output << fraction.numerator << " / " << fraction.denominator;
 	return output;
+}
+
+
+// Overloaded stream extraction operator
+istream& operator>>(istream& input, RationalNumber& number)
+{
+	input >> number.numerator;
+	input.ignore(); // Ignore the /
+	input >> number.denominator;
+
+	number.checkValidity();
+	number.simplify();
+
+	return input;
 }

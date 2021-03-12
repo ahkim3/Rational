@@ -22,6 +22,10 @@ int main()
 
     cout << "Please enter a fraction (in form a/b): ";
     cin >> fraction;
-    cout << fraction;
+
+    RationalNumber fraction2(1, 3);
+
+    RationalNumber sum = fraction + fraction2;
+    cout << sum;
 }
 

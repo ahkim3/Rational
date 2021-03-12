@@ -88,3 +88,89 @@ istream& operator>>(istream& input, RationalNumber& number)
 
 	return input;
 }
+
+
+// Adds fractions
+RationalNumber& RationalNumber::operator+(RationalNumber second)
+{
+	unsigned int greatestCommonDivisor = 
+		findGreatestCommonDivisor(denominator, second.getDenominator());
+	unsigned int leastCommonMultiple =
+		(denominator * second.getDenominator()) / greatestCommonDivisor;
+
+	// Find multipliers to get common demoninator
+	unsigned int firstMultiplier = leastCommonMultiple / denominator;
+	unsigned int secondMultiplier = leastCommonMultiple / 
+		second.getDenominator();
+
+	// Create fraction containing sum
+	RationalNumber sum((numerator * firstMultiplier) + (second.numerator * 
+		secondMultiplier), leastCommonMultiple);
+
+	return sum;
+}
+
+/*
+// Subtracts fractions
+RationalNumber& RationalNumber::operator-()
+{
+	// TODO: insert return statement here
+}
+
+
+// Multiplies fractions
+RationalNumber& RationalNumber::operator*()
+{
+	// TODO: insert return statement here
+}
+
+/*
+// Divides fractions
+RationalNumber& RationalNumber::operator/()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator<()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator>()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator<=()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator>=()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator==()
+{
+	// TODO: insert return statement here
+}
+
+RationalNumber& RationalNumber::operator!=()
+{
+	// TODO: insert return statement here
+}*/
+
+
+// Returns current numerator of fraction
+unsigned int RationalNumber::getNumerator()
+{
+	return numerator;
+}
+
+
+// Returns current denominator of fraction
+unsigned int RationalNumber::getDenominator()
+{
+	return denominator;
+}

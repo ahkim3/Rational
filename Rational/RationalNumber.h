@@ -34,9 +34,11 @@ class RationalNumber
 public:
 	RationalNumber(); // Default constructor
 	RationalNumber(int, int); // Numerator and denominator
-	/*RationalNumber& operator+();
+
+	RationalNumber& operator+(RationalNumber);
 	RationalNumber& operator-();
 	RationalNumber& operator*();
+	/*
 	RationalNumber& operator/();
 	RationalNumber& operator<();
 	RationalNumber& operator>();
@@ -44,7 +46,8 @@ public:
 	RationalNumber& operator>=();
 	RationalNumber& operator==();
 	RationalNumber& operator!=();*/
-
+	unsigned int getNumerator();
+	unsigned int getDenominator();
 
 	~RationalNumber();
 

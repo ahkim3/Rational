@@ -48,6 +48,9 @@ public:
 	~RationalNumber();
 
 private:
+	unsigned int numerator;
+	unsigned int denominator;
 
+	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
 };
 

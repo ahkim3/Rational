@@ -70,19 +70,19 @@ int main()
     notEqualTo = firstFraction != secondFraction;
 
     // Display comparisons
-    if (lessThan)
+    if (lessThan) // <
         cout << firstFraction << " is less than " << secondFraction;
     else
         cout << firstFraction << " is not less than " << secondFraction;
     cout << endl;
 
-    if (greaterThan)
+    if (greaterThan) // >
         cout << firstFraction << " is greater than " << secondFraction;
     else
         cout << firstFraction << " is not greater than " << secondFraction;
     cout << endl;
 
-    if (lessThanOrEqualTo)
+    if (lessThanOrEqualTo) // <=
         cout << firstFraction << " is less than or equal to " 
         << secondFraction;
     else
@@ -90,7 +90,7 @@ int main()
         << secondFraction;
     cout << endl;
 
-    if (greaterThanOrEqualTo)
+    if (greaterThanOrEqualTo) // >=
         cout << firstFraction << " is greater than or equal to " 
         << secondFraction;
     else
@@ -98,16 +98,18 @@ int main()
         << secondFraction;
     cout << endl;
 
-    if (equalTo)
+    if (equalTo) // ==
         cout << firstFraction << " is equal-to " << secondFraction;
     else
         cout << firstFraction << " is not equal-to " << secondFraction;
     cout << endl;
 
-    if (notEqualTo)
+    if (notEqualTo) // !=
         cout << firstFraction << " is not-equal-to " << secondFraction;
     else
         cout << firstFraction << " is not not-equal-to " << secondFraction;
-    cout << endl;
-}
+    cout << endl << endl;
 
+    system("pause");
+    return 0;
+}

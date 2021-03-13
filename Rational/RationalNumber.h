@@ -11,21 +11,21 @@ class RationalNumber
 
 public:
 	RationalNumber(); // Default constructor
-	RationalNumber(int, int); // Numerator and denominator
+	RationalNumber(const int, const int); // Numerator and denominator
 
 	~RationalNumber();
 
-	RationalNumber& operator+(RationalNumber&);
-	RationalNumber& operator-(RationalNumber&);
-	RationalNumber& operator*(RationalNumber&);
-	RationalNumber& operator/(RationalNumber&);
+	RationalNumber& operator+(const RationalNumber&);
+	RationalNumber& operator-(const RationalNumber&);
+	RationalNumber& operator*(const RationalNumber&);
+	RationalNumber& operator/(const RationalNumber&);
 	
-	bool operator<(RationalNumber&);
-	bool operator>(RationalNumber&);
-	bool operator<=(RationalNumber&);
-	bool operator>=(RationalNumber&);
-	bool operator==(RationalNumber&);
-	bool operator!=(RationalNumber&);
+	bool operator<(const RationalNumber&);
+	bool operator>(const RationalNumber&);
+	bool operator<=(const RationalNumber&);
+	bool operator>=(const RationalNumber&);
+	bool operator==(const RationalNumber&);
+	bool operator!=(const RationalNumber&);
 
 	bool isValid();
 	bool isDividedByZero();

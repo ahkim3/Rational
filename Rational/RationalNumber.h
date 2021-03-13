@@ -8,32 +8,12 @@ class RationalNumber
 {
 	friend ostream& operator<<(ostream&, const RationalNumber&);
 	friend istream& operator>>(istream&, RationalNumber&);
-	
-	/*
-	overload:
-	+
-	-
-	*
-	/
-
-	<
-	>
-	<=
-	>=
-	==
-	!=
-
-	<<
-	>>
-
-	not required but can do:
-	+=
-	-=
-	*/
 
 public:
 	RationalNumber(); // Default constructor
 	RationalNumber(int, int); // Numerator and denominator
+
+	~RationalNumber();
 
 	RationalNumber& operator+(RationalNumber&);
 	RationalNumber& operator-(RationalNumber&);
@@ -47,10 +27,12 @@ public:
 	bool operator==(RationalNumber&);
 	bool operator!=(RationalNumber&);
 
-	~RationalNumber();
+	bool isValid();
+	bool isDividedByZero();
 
 private:
 	int numerator, denominator;
+	bool valid, divideByZeroError;
 
 	int findGreatestCommonDivisor(const unsigned int, const unsigned int);
 	void checkValidity();

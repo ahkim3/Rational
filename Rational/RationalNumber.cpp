@@ -9,6 +9,8 @@ RationalNumber::RationalNumber()
 {
 	numerator = 1;
 	denominator = 1;
+	valid = true;
+	divideByZeroError = false;
 }
 
 
@@ -42,9 +44,12 @@ int RationalNumber::findGreatestCommonDivisor(const unsigned int first,
 // Prevents division by 0 and negative denominators
 void RationalNumber::checkValidity()
 {
+	valid = true;
+
 	if (denominator == 0)
 	{
-		cout << "Denominator must be non-zero.";
+		cout << "ERROR: Denominator must be non-zero.";
+		valid = false;
 	}
 	else if (numerator < 0 && denominator < 0)
 	{
@@ -119,9 +124,9 @@ RationalNumber& RationalNumber::operator+(RationalNumber& secondFrac)
 		secondFrac.denominator;
 
 	// Create fraction containing sum
-	RationalNumber sum((numerator * firstMultiplier) + 
+	static RationalNumber sum((numerator * firstMultiplier) + 
 		(secondFrac.numerator * secondMultiplier), leastCommonMultiple);
-
+	 
 	return sum;
 }
 
@@ -140,7 +145,7 @@ RationalNumber& RationalNumber::operator-(RationalNumber& secondFrac)
 		secondFrac.denominator;
 
 	// Create fraction containing sum
-	RationalNumber difference((numerator * firstMultiplier) - 
+	static RationalNumber difference((numerator * firstMultiplier) - 
 		(secondFrac.numerator *	secondMultiplier), leastCommonMultiple);
 
 	return difference;
@@ -151,7 +156,7 @@ RationalNumber& RationalNumber::operator-(RationalNumber& secondFrac)
 RationalNumber& RationalNumber::operator*(RationalNumber& secondFrac)
 {
 	// Create fraction containing product
-	RationalNumber product((numerator * secondFrac.numerator),
+	static RationalNumber product((numerator * secondFrac.numerator),
 		(denominator * secondFrac.denominator));
 
 	return product;
@@ -164,13 +169,16 @@ RationalNumber& RationalNumber::operator/(RationalNumber& secondFrac)
 	if (secondFrac.numerator != 0) // Checks to see if divisor is not 0
 	{
 		// Create fraction containing product
-		RationalNumber quotient((numerator * secondFrac.denominator),
+		static RationalNumber quotient((numerator * secondFrac.denominator),
 			(denominator * secondFrac.numerator));
 
 		return quotient;
 	}
-	else
-		throw invalid_argument("Divisor cannot be 0.");
+	else // Divisor was 0
+	{
+		cout << "ERROR: Your divisor cannot be 0.";
+		divideByZeroError = true;
+	}
 }
 
 
@@ -229,6 +237,24 @@ bool RationalNumber::operator!=(RationalNumber& secondFrac)
 {
 	if (((double)numerator / (double)denominator)
 		!= ((double)secondFrac.numerator / (double)secondFrac.denominator))
+		return true;
+	return false;
+}
+
+
+// Returns the validity of the fraction
+bool RationalNumber::isValid()
+{
+	if (valid)
+		return true;
+	return false;
+}
+
+
+// Returns true if a divide by zero error is needed
+bool RationalNumber::isDividedByZero()
+{
+	if (divideByZeroError)
 		return true;
 	return false;
 }

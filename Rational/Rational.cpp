@@ -24,21 +24,28 @@ int main()
         equalTo, notEqualTo;
 
     // Prompt user to enter fractions
-    cout << "Please enter a fraction (in form a/b): ";
-    cin >> firstFraction;
-    cout << "Please enter a second fraction (in form a/b): ";
-    cin >> secondFraction;
-    cout << endl;
+    do
+    {
+        cout << "Please enter a fraction (in form a/b): ";
+        cin >> firstFraction;
+        cout << endl << endl;
+    } while (!firstFraction.isValid());
+
+    do
+    {
+        cout << "Please enter a second fraction (in form a/b): ";
+        cin >> secondFraction;
+        cout << endl << endl;
+    } while (!secondFraction.isValid());
 
     // Display simplified fractions
     cout << "First fraction (simplified): " << firstFraction << endl;
     cout << "Second fraction (simplified): " << secondFraction << endl << endl;
 
-    // Calculate arithmetic operations
+    // Calculate first three arithmetic operations
     sum = firstFraction + secondFraction;
     difference = firstFraction - secondFraction;
     product = firstFraction * secondFraction;
-    quotient = firstFraction / secondFraction;
 
     // Display arithmetic operations
     cout << firstFraction << " + " << secondFraction << " = " << sum << endl;
@@ -46,8 +53,13 @@ int main()
         << endl;
     cout << firstFraction << " * " << secondFraction << " = " << product 
         << endl;
-    cout << firstFraction << " / " << secondFraction << " = " << quotient 
-        << endl << endl;
+
+    // Handle division operation and display results
+    cout << firstFraction << " / " << secondFraction << " = ";
+    quotient = firstFraction / secondFraction;
+    if (!firstFraction.isDividedByZero())
+        cout << quotient;
+    cout << endl << endl;
 
     // Calculate comparisons
     lessThan = firstFraction < secondFraction;

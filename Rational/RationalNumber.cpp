@@ -47,7 +47,7 @@ void RationalNumber::checkValidity()
 {
 	valid = true;
 
-	if (denominator == 0)
+	if (denominator == 0) // Error if denominator is 0
 	{
 		cout << "ERROR: Denominator must be non-zero.";
 		valid = false;
@@ -58,7 +58,7 @@ void RationalNumber::checkValidity()
 		numerator = abs(numerator);
 		denominator = abs(denominator);
 	}
-	else if (denominator < 0)
+	else if (denominator < 0) // Move negative from denominator to numerator
 	{
 		numerator *= -1;
 		denominator = abs(denominator);
